@@ -5,8 +5,8 @@
  *      Author: dung
  */
 
-#ifndef CORE_LOADDATA_H_
-#define CORE_LOADDATA_H_
+#ifndef CORE_DATAHANDLER_H_
+#define CORE_DATAHANDLER_H_
 
 
 #include "../Data/ListFace.h"
@@ -20,16 +20,20 @@
 #include <iostream>
 #include <stdio.h>
 #include <string>
+#include <sstream>
+#include <stdlib.h>
 #include <fstream>
 
 using namespace cv;
-class LoadData {
+class DataHandler {
 public:
-	LoadData(char link[]);
+	DataHandler(char link[]);
 	void GiveLink(char _link[]);
-	ListFace GetData();
+	ListFace LoadData();
+	void StoreData(cv::Mat face, String name);
 private:
-	ListFace list;
+	char link[1000];
+	int count = 0;
 };
 
-#endif /* CORE_LOADDATA_H_ */
+#endif /* CORE_DATAHANDLER_H_ */

@@ -50,7 +50,7 @@ private:
 
 
 
-static String face_cascade_name = "HaarCascade/lbpcascade_frontalface.xml";
+static String face_cascade_name = "HaarCascade/haarcascade_frontalface_alt_test.xml";
 static String eyes_cascade_name = "HaarCascade/haarcascade_eye_tree_eyeglasses.xml";
 static String window_name = "Capture - Face detection";
 #endif /* FACERECOGNITION_H_ */

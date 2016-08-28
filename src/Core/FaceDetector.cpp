@@ -159,7 +159,7 @@ String FaceDetector::Prediction(Mat Test_Img){
 				add(r, mean_g.reshape(1,1),r);
 				String Name = "Prediction: ";
 
-				/*Using minclas (i_th img) to feedback the name*/
+				/*Using minclas (i_th img) to feedback the name
 				if ((minclas >= 394 && minclas <= 399) || (minclas >= 407 && minclas <= 408)){
 
 					Name = Name + "Ty";
@@ -168,15 +168,30 @@ String FaceDetector::Prediction(Mat Test_Img){
 					Name = Name + "Me de thuong";
 				} else {
 
-					Name = Name + "Ahihihi hong3 bik";
-				}
+					Name = Name + "Ahihihi hok bik";
+					Mat t = norm_0_255(Test_Img).reshape(1, faces[0].rows);
+					this->utor.AddFace(t, mindist);
+				}*/
 
 				imshow("Hello", norm_0_255(r).reshape(1, faces[0].rows));
 				/*imshow("Input Img", norm_0_255(Test_Img).reshape(1, list[0].rows));
 
 				cv::waitKey(0);*/
-				return Name;
+				std::cout << mindist << std::endl;
+				if (mindist <= 3500.0){
+					return "prediction: " + list.TakeFace(minclas).TakeName();
+				} else {
+					Mat t = norm_0_255(Test_Img).reshape(1, faces[0].rows);
+					this->utor.AddFace(t, mindist);
+					return "unknown";
+				}
 
+
+}
+
+
+NewFaces FaceDetector::GiveUtor(){
+	return this->utor;
 }
 
 

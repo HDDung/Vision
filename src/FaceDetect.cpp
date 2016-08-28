@@ -15,9 +15,10 @@
 #include <iostream>
 #include <stdio.h>
 #include <string>
+
+#include "Core/DataHandler.h"
 #include "Core/FaceRecognition.h"
 #include "Core/FaceDetector.h"
-#include "Core/LoadData.h"
 
 using namespace std;
 using namespace cv;
@@ -26,7 +27,9 @@ int main() {
 
 		VideoCapture capture;
 	    Mat frame;
-	    FaceDetector dtor1 = FaceDetector(LoadData("Database/face").GetData());
+	    DataHandler handler = DataHandler("Database/face");
+
+	    FaceDetector dtor1 = FaceDetector(handler.LoadData());
 	    dtor1.Training();
 	    //-- 2. Read the video stream
 	    capture.open( -1 );
@@ -53,6 +56,9 @@ int main() {
 	        int c = waitKey(10);
 	        if( (char)c == 27 ) { break; }
 	    }
+	    destroyAllWindows();
+	    waitKey(1000);
+	    dtor1.GiveUtor().UpdateData(handler);
 /*
 	    frame = imread("Test/test1.jpg");
 	    FaceRecognition recog(frame);

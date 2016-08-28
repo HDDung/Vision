@@ -14,11 +14,13 @@
 #include "opencv2/imgproc.hpp"
 #include "opencv2/core.hpp"
 #include "../Data/ListFace.h"
+#include "NewFaces.h"
 
 #include <iostream>
 #include <stdio.h>
 #include <string>
 #include <fstream>
+
 
 using namespace std;
 using namespace cv;
@@ -36,7 +38,9 @@ public:
 	void Training();
 	String Prediction(Mat Test_Img);
 	FaceDetector();
+	NewFaces GiveUtor();
 	virtual ~FaceDetector();
+
 private:
 	Mat mean_g;
 	Mat eigenvector_g;
@@ -45,6 +49,7 @@ private:
 	PCA pca_g;
 	std::vector<Mat> faces;
 	ListFace list;
+	NewFaces utor;
 };
 
 #endif /* FACEDETECTOR_H_ */

@@ -4,19 +4,22 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
+../src/Core/DataHandler.cpp \
 ../src/Core/FaceDetector.cpp \
 ../src/Core/FaceRecognition.cpp \
-../src/Core/LoadData.cpp 
+../src/Core/NewFaces.cpp 
 
 OBJS += \
+./src/Core/DataHandler.o \
 ./src/Core/FaceDetector.o \
 ./src/Core/FaceRecognition.o \
-./src/Core/LoadData.o 
+./src/Core/NewFaces.o 
 
 CPP_DEPS += \
+./src/Core/DataHandler.d \
 ./src/Core/FaceDetector.d \
 ./src/Core/FaceRecognition.d \
-./src/Core/LoadData.d 
+./src/Core/NewFaces.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
